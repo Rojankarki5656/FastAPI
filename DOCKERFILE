@@ -1,0 +1,24 @@
+# Use Python 3.9 base image
+FROM python:3.9
+
+# Set working directory
+WORKDIR /app
+
+# Install system dependencies for dlib
+RUN apt-get update && apt-get install -y cmake g++ wget unzip
+
+# Install required Python packages
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Install dlib manually
+RUN pip install dlib==19.22.99
+
+# Copy application files
+COPY . .
+
+# Expose port (make sure this matches your app's port)
+EXPOSE 8000
+
+# Run the application
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
