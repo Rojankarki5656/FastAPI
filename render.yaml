@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: FastAPI-App
+    env: python
+    buildCommand: pip install --no-cache-dir -r requirements.txt && pip install dlib==19.22.99
+    startCommand: uvicorn app:app --host 0.0.0.0 --port 8000
+    plan: free
+    envVars:
+      - key: PORT
+        value: 8000
