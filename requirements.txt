@@ -5,7 +5,7 @@ sqlalchemy==2.0.38
 psycopg2-binary==2.9.10
 numpy==1.24.0  # Make sure this supports Python 3.9
 scipy==1.9.3
-dlib==19.24.6  # Latest available version
+dlib==19.24.6 --no-cache-dir # Latest available version
 pillow
 opencv-python
 torch==2.0.1
